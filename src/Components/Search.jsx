@@ -9,7 +9,10 @@ const Search = () => {
     const navigate = useNavigate();
 
     const submitHandler = (e) => {
+        // So that page will not automatically refresh when user enters form
         e.preventDefault();
+
+        // Navigate to specific url when user enters form
         navigate('/searched/' + input)
     }
 

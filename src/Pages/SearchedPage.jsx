@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
 // useParams so that keyword(cuisine type from URL) can be pulled out for use
 import {Link, useParams} from 'react-router-dom';
 
@@ -26,12 +25,14 @@ const SearchedPage = () => {
 
     return (
         <Grid>
-            {searchedRecipes.map((item) => {
+            {searchedRecipes.map((recipe) => {
                 return (
-                    <Card key={item.id}>
-                        <img src={item.image} alt={item.title}/>
-                        <h4>{item.title}</h4>
-                    </Card>
+                    <Link to={'/recipe/' + recipe.id}>
+                        <Card key={recipe.id}>
+                            <img src={recipe.image} alt={recipe.title}/>
+                            <h4>{recipe.title}</h4>
+                        </Card>
+                    </Link>
                 );
             })}
         </Grid>

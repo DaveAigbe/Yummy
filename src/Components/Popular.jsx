@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
-
+import {Link} from 'react-router-dom'
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 
@@ -51,12 +51,14 @@ const Popular = () => {
                             // Each part of the object will be a slider on the slide
                             <SplideSlide key={recipe.id}>
                                 {/* Each part of an object needs a unique key*/}
-                                <Card>
-                                    <Gradient>
-                                        <p><strong>{recipe.title}</strong></p>
-                                        <img src={recipe.image} alt={`${recipe.title}`}/>
-                                    </Gradient>
-                                </Card>
+                                <Link to={'/recipe/' + recipe.id}>
+                                    <Card>
+                                        <Gradient>
+                                            <p><strong>{recipe.title}</strong></p>
+                                            <img src={recipe.image} alt={`${recipe.title}`}/>
+                                        </Gradient>
+                                    </Card>
+                                </Link>
                             </SplideSlide>
                         );
                     })}
