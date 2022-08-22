@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 
 import React from 'react';
 
-const FoodCategories = () => {
+const CategoriesBar = () => {
     return (
         // styled element that formats container for food categories ui
         <List>
@@ -90,4 +90,4 @@ const SLink = styled(NavLink)`
   
 `
 
-export default FoodCategories;
+export default CategoriesBar;

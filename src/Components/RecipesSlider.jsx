@@ -14,7 +14,7 @@ const RecipesSlider = ({title='Trending', type = ''}) => {
         return () => {
             getRecipeType();
         };
-    }, );
+    }, [recipeType]);
 
     const getRecipeType = async () => {
         let tags = ''
@@ -34,10 +34,9 @@ const RecipesSlider = ({title='Trending', type = ''}) => {
         } else {
             const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=9${tags}`);
             const data = await api.json();
-            setRecipeType(() => data.recipes);
+            setRecipeType(data.recipes);
 
             localStorage.setItem(storageName, JSON.stringify(data.recipes));
-
         }
     };
 

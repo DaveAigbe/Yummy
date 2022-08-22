@@ -1,10 +1,11 @@
 import AllPages from "./Pages/AllPages";
 import {BrowserRouter, Link} from "react-router-dom";
-import FoodCategories from "./Components/FoodCategories";
+import CategoriesBar from "./Components/CategoriesBar";
 import React from "react";
 import SearchBar from "./Components/SearchBar";
 import styled from 'styled-components';
 import {GiKnifeFork} from "react-icons/gi";
+import ReloadButton from "./Components/ReloadButton";
 
 function App() {
     return (
@@ -16,7 +17,8 @@ function App() {
                     <Logo to={'/'}>Yummy</Logo>
                 </Nav>
                 <SearchBar/>
-                <FoodCategories/>
+                <ReloadButton/>
+                <CategoriesBar/>
                 <AllPages/>
             </BrowserRouter>
         </div>
