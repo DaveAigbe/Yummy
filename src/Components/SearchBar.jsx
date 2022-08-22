@@ -4,7 +4,7 @@ import {useState} from "react";
 import {FaSearch} from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
 
-const Search = () => {
+const SearchBar = () => {
     const [input, setInput] = useState('')
     const navigate = useNavigate();
 
@@ -58,4 +58,4 @@ const FormStyle = styled.form`
 `
 
 
-export default Search;
+export default SearchBar;

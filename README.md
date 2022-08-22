@@ -1,1 +1,1 @@
-# Yummy - RecipePage Exploration App
+# Yummy - SingleRecipePage Exploration App

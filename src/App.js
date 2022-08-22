@@ -2,7 +2,7 @@ import AllPages from "./Pages/AllPages";
 import {BrowserRouter, Link} from "react-router-dom";
 import FoodCategories from "./Components/FoodCategories";
 import React from "react";
-import Search from "./Components/Search";
+import SearchBar from "./Components/SearchBar";
 import styled from 'styled-components';
 import {GiKnifeFork} from "react-icons/gi";
 
@@ -15,7 +15,7 @@ function App() {
                     <GiKnifeFork/>
                     <Logo to={'/'}>Yummy</Logo>
                 </Nav>
-                <Search/>
+                <SearchBar/>
                 <FoodCategories/>
                 <AllPages/>
             </BrowserRouter>
