@@ -15,7 +15,7 @@ const ReloadButton = ({reload, type}) => {
 
     return (
         <IoReload
-            style={{color:'green' ,cursor:"pointer", marginLeft:"0.5rem", height:"20px", width:"20px"}}
+            style={{color:"#76AD76" ,cursor:"pointer", marginLeft:"0.5rem", height:"20px", width:"20px"}}
             onClick={() => emptyOutMemory()}
         />
     );

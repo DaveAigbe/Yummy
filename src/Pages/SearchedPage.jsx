@@ -16,7 +16,7 @@ const SearchedPage = () => {
 
 
     const getSearched = async (searchValue) => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=12&query=${searchValue}`);
+        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=12&query=${searchValue}`)
         const recipes = await data.json();
 
         setSearchedRecipes(recipes.results);
@@ -25,16 +25,20 @@ const SearchedPage = () => {
 
     return (
         <Grid>
-            {searchedRecipes.map((recipe) => {
-                return (
-                    <Link to={'/recipe/' + recipe.id}>
-                        <Card key={recipe.id}>
-                            <img src={recipe.image} alt={recipe.title}/>
-                            <h4>{recipe.title}</h4>
-                        </Card>
-                    </Link>
-                );
-            })}
+            {searchedRecipes.length > 0 ?
+                searchedRecipes.map((recipe) => {
+                        return (
+                            <Link to={'/recipe/' + recipe.id}>
+                                <Card key={recipe.id}>
+                                    <img src={recipe.image} alt={recipe.title}/>
+                                    <h4>{recipe.title}</h4>
+                                </Card>
+                            </Link>
+                        );
+                    })
+                :
+                <H1Styled>Recipe or Ingredient could not be found, please try again!</H1Styled>
+            }
         </Grid>
     );
 };
@@ -61,6 +65,13 @@ const Card = styled.div`
     padding: 1rem;
   }
 `;
+
+const H1Styled = styled.h1`
+    display:flex;
+    text-align: center;
+    justify-content: center;
+  color: white;
+`
 
 
 export default SearchedPage;

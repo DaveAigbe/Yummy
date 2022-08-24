@@ -16,6 +16,9 @@ function App() {
                     <GiKnifeFork/>
                     <Logo to={'/'}>Yummy</Logo>
                 </Nav>
+                <Slogan>
+                    <p><em>Explore your new favorite dish seamlessly!</em></p>
+                </Slogan>
                 <SearchBar/>
                 <CategoriesBar/>
                 <AllPages/>
@@ -26,12 +29,14 @@ function App() {
 
 const Logo = styled(Link)`
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 600;
+  color: #8DC48D;
+  font-family: "Ink Free", serif;
 `;
 
 const Nav = styled.div`
-  padding: 4rem 0rem;
+  padding: 2rem 0rem 1rem 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,6 +45,13 @@ const Nav = styled.div`
     font-size: 2rem;
   }
 `;
+
+const Slogan = styled.div`
+  padding: 0rem 0rem 4rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 
 export default App;

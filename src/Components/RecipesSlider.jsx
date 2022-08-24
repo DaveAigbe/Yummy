@@ -24,6 +24,9 @@ const RecipesSlider = ({title = 'Trending', type = 'popular'}) => {
         if (type === 'vegetarian') {
             storageName = 'vegetarian';
             tags = '&tags=vegetarian';
+        } else if (type === 'vegan'){
+            storageName = 'vegan';
+            tags = '&tags=vegan';
         } else {
             storageName = 'popular'
             tags = ''
@@ -87,6 +90,9 @@ const RecipesSlider = ({title = 'Trending', type = 'popular'}) => {
 // 'styled' allows you to create custom styled elements, that can be used as normal elements(with some styles added)
 const Wrapper = styled.div`
   margin: 4rem 0rem;
+  h3{
+    color: white;
+  }
 `;
 
 const Card = styled.div`
@@ -94,6 +100,7 @@ const Card = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
+  
   // Applies to anything with the img tag
   img {
     width: 100%;
@@ -104,7 +111,7 @@ const Card = styled.div`
     object-fit: cover;
 
   }
-
+  
   p {
     position: absolute;
     z-index: 10;
