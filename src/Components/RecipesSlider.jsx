@@ -3,26 +3,30 @@ import styled from "styled-components";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import {Link} from 'react-router-dom';
+import ReloadButton from "./ReloadButton";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 
-const RecipesSlider = ({title='Trending', type = ''}) => {
+const RecipesSlider = ({title = 'Trending', type = 'popular'}) => {
     const [recipeType, setRecipeType] = useState([]);
 
     useEffect(() => {
-        return () => {
-            getRecipeType();
-        };
-    }, [recipeType]);
+        getRecipeType();
+    },[]);
 
     const getRecipeType = async () => {
-        let tags = ''
-        let storageName = 'popular'
-        // If a tag was passed through
-        if (type){
-            storageName = 'vegetarian'
-            tags = '&tags=vegetarian'
+        // Key name for the local memory value & tags if necessary, based off of type prop
+        let storageName;
+        let tags;
+
+        // Set values for api string and local storage depending on type that is passed through
+        if (type === 'vegetarian') {
+            storageName = 'vegetarian';
+            tags = '&tags=vegetarian';
+        } else {
+            storageName = 'popular'
+            tags = ''
         }
 
         // Grab the selected item from local storage, even if it is null
@@ -36,14 +40,23 @@ const RecipesSlider = ({title='Trending', type = ''}) => {
             const data = await api.json();
             setRecipeType(data.recipes);
 
+            // Store the item in local storage, so it is not constantly reloaded
             localStorage.setItem(storageName, JSON.stringify(data.recipes));
+            // Store the data in state
+            setRecipeType(data.recipes);
         }
+        // test to make sure function is being called from button
+        console.log('inside getRecipeType func')
     };
 
     return (
         <div>
             <Wrapper>
-                <h3>{title}</h3>
+                <h3>
+                    {title}
+                    {/*Add button component next to title and pass through prop/function*/}
+                    <ReloadButton reload={getRecipeType} type={type}/>
+                </h3>
                 {/*Creates the slide*/}
                 <Splide options={{perPage: 4, arrows: false, pagination: false, drag: "free", gap: "5rem"}}>
                     {recipeType.map(recipe => {
@@ -55,8 +68,8 @@ const RecipesSlider = ({title='Trending', type = ''}) => {
                                     <Card>
                                         <Gradient>
                                             <p><strong>{recipe.title}</strong></p>
-                                            <img src={recipe.image} alt={`${recipe.title}`}/>
                                         </Gradient>
+                                            <img src={recipe.image} alt={`${recipe.title}`}/>
                                     </Card>
                                 </Link>
                             </SplideSlide>

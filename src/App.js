@@ -5,7 +5,7 @@ import React from "react";
 import SearchBar from "./Components/SearchBar";
 import styled from 'styled-components';
 import {GiKnifeFork} from "react-icons/gi";
-import ReloadButton from "./Components/ReloadButton";
+
 
 function App() {
     return (
@@ -17,7 +17,6 @@ function App() {
                     <Logo to={'/'}>Yummy</Logo>
                 </Nav>
                 <SearchBar/>
-                <ReloadButton/>
                 <CategoriesBar/>
                 <AllPages/>
             </BrowserRouter>

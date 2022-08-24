@@ -27,6 +27,7 @@ const SingleRecipePage = () => {
                 <h2>{recipe.title}</h2>
                 <img src={recipe.image} alt=""/>
                 <Description>
+                    {/*The text is written with elements, so dangerouslySetInnerHTML will format it as normal html*/}
                     <h4 dangerouslySetInnerHTML={{__html: recipe.summary}}></h4>
                 </Description>
             </div>

@@ -1,24 +1,28 @@
 import React from 'react';
 import {IoReload} from 'react-icons/io5';
-import styled from 'styled-components'
+
+const ReloadButton = ({reload, type}) => {
+
+    const emptyOutMemory = () => {
+        // Clear out of memory the object with the specific type key
+        localStorage.removeItem(type)
+        // Test to make sure function is being called
+        console.log('inside emptyOutMemory func')
+        // After memory is cleared, call the getRecipeType function
+        reload();
+    }
 
 
-const emptyOutMemory = () => {
-    localStorage.clear();
-}
-
-
-const ReloadButton = () => {
     return (
-        <Button onClick={() => emptyOutMemory()}>
-            <IoReload/>
-        </Button>
+        <IoReload
+            style={{color:'green' ,cursor:"pointer", marginLeft:"0.5rem", height:"20px", width:"20px"}}
+            onClick={() => emptyOutMemory()}
+        />
     );
 };
 
 
-const Button = styled.button`
-  cursor: pointer;
-`
+
+
 
 export default ReloadButton;
